@@ -1,0 +1,6 @@
+vistas.AccesoHistorialMedico$2
+vistas.AccesoHistorialMedico$1
+Vistas.AccesoHistorialMedico$2
+Vistas.AccesoHistorialMedico$1
+Vistas.AccesoHistorialMedico
+vistas.AccesoHistorialMedico

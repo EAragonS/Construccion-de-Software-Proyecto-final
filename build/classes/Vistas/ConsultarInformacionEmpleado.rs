@@ -1,0 +1,2 @@
+Vistas.ConsultarInformacionEmpleado
+vistas.ConsultarInformacionEmpleado
