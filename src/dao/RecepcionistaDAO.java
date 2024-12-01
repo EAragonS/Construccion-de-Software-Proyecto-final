@@ -12,6 +12,7 @@ public class RecepcionistaDAO {
         this.conexion = conexion;
     }
 
+    // Insertar un nuevo recepcionista
     public boolean insertar(Recepcionista recepcionista) {
         String sql = "INSERT INTO recepcionista (idRecepcionista) VALUES (?)";
         try (PreparedStatement ps = conexion.prepareStatement(sql)) {
@@ -23,6 +24,7 @@ public class RecepcionistaDAO {
         }
     }
 
+    // Actualizar un recepcionista existente
     public boolean actualizar(Recepcionista recepcionista) {
         String sql = "UPDATE recepcionista SET idRecepcionista = ? WHERE idRecepcionista = ?";
         try (PreparedStatement ps = conexion.prepareStatement(sql)) {
@@ -35,6 +37,7 @@ public class RecepcionistaDAO {
         }
     }
 
+    // Eliminar un recepcionista
     public boolean eliminar(int idRecepcionista) {
         String sql = "DELETE FROM recepcionista WHERE idRecepcionista = ?";
         try (PreparedStatement ps = conexion.prepareStatement(sql)) {
@@ -46,9 +49,10 @@ public class RecepcionistaDAO {
         }
     }
 
+    // Obtener un recepcionista por su ID
     public Recepcionista obtenerPorId(int idRecepcionista) {
-        String sql = "SELECT r.idRecepcionista, e.idEmpleado, e.nombre, e.apellido, e.correo, e.telefono, e.fechaIngreso, " +
-                     "e.nombreUsuario, e.contrasena " +
+        String sql = "SELECT r.idRecepcionista, e.idEmpleado, e.nombreCompletoE, e.fechaIngreso, e.correoElectronicoE, " +
+                     "e.numTelefonoE, e.nombreUsuario, e.contrasena " +
                      "FROM recepcionista r " +
                      "JOIN empleado e ON r.idRecepcionista = e.idEmpleado " +
                      "WHERE r.idRecepcionista = ?";
@@ -59,11 +63,10 @@ public class RecepcionistaDAO {
                     return new Recepcionista(
                             rs.getInt("idRecepcionista"),
                             rs.getInt("idEmpleado"),
-                            rs.getString("nombre"),
-                            rs.getString("apellido"),
+                            rs.getString("nombreCompletoE"),
                             rs.getDate("fechaIngreso"),
-                            rs.getString("correo"),
-                            rs.getString("telefono"),
+                            rs.getString("correoElectronicoE"),
+                            rs.getString("numTelefonoE"),
                             rs.getString("nombreUsuario"),
                             rs.getString("contrasena")
                     );
@@ -75,10 +78,11 @@ public class RecepcionistaDAO {
         return null;
     }
 
+    // Obtener todos los recepcionistas
     public List<Recepcionista> obtenerTodos() {
         List<Recepcionista> recepcionistas = new ArrayList<>();
-        String sql = "SELECT r.idRecepcionista, e.idEmpleado, e.nombre, e.apellido, e.correo, e.telefono, e.fechaIngreso, " +
-                     "e.nombreUsuario, e.contrasena " +
+        String sql = "SELECT r.idRecepcionista, e.idEmpleado, e.nombreCompletoE, e.fechaIngreso, e.correoElectronicoE, " +
+                     "e.numTelefonoE, e.nombreUsuario, e.contrasena " +
                      "FROM recepcionista r " +
                      "JOIN empleado e ON r.idRecepcionista = e.idEmpleado";
         try (Statement st = conexion.createStatement();
@@ -87,11 +91,10 @@ public class RecepcionistaDAO {
                 recepcionistas.add(new Recepcionista(
                         rs.getInt("idRecepcionista"),
                         rs.getInt("idEmpleado"),
-                        rs.getString("nombre"),
-                        rs.getString("apellido"),
+                        rs.getString("nombreCompletoE"),
                         rs.getDate("fechaIngreso"),
-                        rs.getString("correo"),
-                        rs.getString("telefono"),
+                        rs.getString("correoElectronicoE"),
+                        rs.getString("numTelefonoE"),
                         rs.getString("nombreUsuario"),
                         rs.getString("contrasena")
                 ));

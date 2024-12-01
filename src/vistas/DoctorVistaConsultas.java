@@ -2,20 +2,26 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package Vistas;
+package vistas;
+import controlador.DoctorVistaConsultasController;
+import controlador.VentanaManager;
 
 /**
  *
  * @author Javier
  */
 public class DoctorVistaConsultas extends javax.swing.JFrame {
-
+private DoctorVistaConsultasController controlador;
     /**
      * Creates new form DoctorVistaConsultas
      */
-    public DoctorVistaConsultas() {
+   public DoctorVistaConsultas(DoctorVistaConsultasController controlador) {
+        this.controlador = controlador;
         initComponents();
+        this.setLocationRelativeTo(null);
+
     }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -56,6 +62,11 @@ public class DoctorVistaConsultas extends javax.swing.JFrame {
         BtnIniciarConsulta.setForeground(new java.awt.Color(255, 255, 255));
         BtnIniciarConsulta.setText("Iniciar consulta");
         BtnIniciarConsulta.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        BtnIniciarConsulta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnIniciarConsultaActionPerformed(evt);
+            }
+        });
 
         BtnCerrarSesion.setBackground(new java.awt.Color(255, 153, 0));
         BtnCerrarSesion.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -151,6 +162,10 @@ public class DoctorVistaConsultas extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_BtnCerrarSesionActionPerformed
 
+    private void BtnIniciarConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnIniciarConsultaActionPerformed
+        controlador.manejarIniciarConsulta();
+    }//GEN-LAST:event_BtnIniciarConsultaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -181,7 +196,8 @@ public class DoctorVistaConsultas extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new DoctorVistaConsultas().setVisible(true);
+                VentanaManager manager = new VentanaManager();
+            manager.mostrarDoctorVistaConsultas();
             }
         });
     }

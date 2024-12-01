@@ -1,22 +1,26 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
-package Vistas;
+package vistas;
 
-/**
- *
- * @author Javier
- */
+import controlador.AñadirEmpleadoController;
+
 public class AñadirEmpleado extends javax.swing.JFrame {
+    private AñadirEmpleadoController controlador;
 
-    /**
-     * Creates new form AñadirEmpleado
-     */
-    public AñadirEmpleado() {
+    public AñadirEmpleado(AñadirEmpleadoController controlador) {
+        this.controlador = controlador;
         initComponents();
         this.setLocationRelativeTo(null);
+        BtnCancelar.addActionListener(controlador);
+        BtnGuardar.addActionListener(controlador);
     }
+
+    public javax.swing.JButton getBtnCancelar() {
+        return BtnCancelar;
+    }
+
+    public javax.swing.JButton getBtnGuardar() {
+        return BtnGuardar;
+    }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -56,7 +60,7 @@ public class AñadirEmpleado extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jPanel9 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        BtnGuardar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -299,6 +303,11 @@ public class AñadirEmpleado extends javax.swing.JFrame {
         BtnCancelar.setForeground(new java.awt.Color(0, 51, 255));
         BtnCancelar.setText("Cancelar");
         BtnCancelar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        BtnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnCancelarActionPerformed(evt);
+            }
+        });
         getContentPane().add(BtnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 520, -1, -1));
 
         jPanel11.setBackground(new java.awt.Color(0, 102, 102));
@@ -341,11 +350,16 @@ public class AñadirEmpleado extends javax.swing.JFrame {
             .addGap(0, 42, Short.MAX_VALUE)
         );
 
-        jButton1.setBackground(new java.awt.Color(255, 102, 51));
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Guardar cambios");
-        jButton1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        BtnGuardar.setBackground(new java.awt.Color(255, 102, 51));
+        BtnGuardar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        BtnGuardar.setForeground(new java.awt.Color(255, 255, 255));
+        BtnGuardar.setText("Guardar cambios");
+        BtnGuardar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        BtnGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnGuardarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
@@ -357,7 +371,7 @@ public class AñadirEmpleado extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
                 .addContainerGap(554, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addComponent(BtnGuardar)
                 .addGap(156, 156, 156))
         );
         jPanel9Layout.setVerticalGroup(
@@ -366,7 +380,7 @@ public class AñadirEmpleado extends javax.swing.JFrame {
                 .addGap(131, 131, 131)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 300, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addComponent(BtnGuardar)
                 .addGap(26, 26, 26))
         );
 
@@ -374,6 +388,14 @@ public class AñadirEmpleado extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void BtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCancelarActionPerformed
+      //
+    }//GEN-LAST:event_BtnCancelarActionPerformed
+
+    private void BtnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnGuardarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BtnGuardarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -405,13 +427,13 @@ public class AñadirEmpleado extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AñadirEmpleado().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnCancelar;
+    private javax.swing.JButton BtnGuardar;
     private javax.swing.JTextField CampoApellidos;
     private javax.swing.JTextField CampoContraseña;
     private javax.swing.JTextField CampoCorreo;
@@ -428,7 +450,6 @@ public class AñadirEmpleado extends javax.swing.JFrame {
     private javax.swing.JLabel LabelNombres;
     private javax.swing.JLabel LabelNumeroTelefonico;
     private javax.swing.JLabel LabelTipoEmpleado;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;

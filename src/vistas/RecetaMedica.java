@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package Vistas;
+package vistas;
 
 /**
  *
@@ -40,7 +40,6 @@ public class RecetaMedica extends javax.swing.JFrame {
         CampoCedulaDoctor = new javax.swing.JTextField();
         BtnGuardarReceta = new javax.swing.JButton();
         BtnCancelar = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -114,9 +113,6 @@ public class RecetaMedica extends javax.swing.JFrame {
         BtnCancelar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel1.add(BtnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 630, -1, -1));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/logo_for_a_pharmaceutical_company__1_-removebg-preview.png"))); // NOI18N
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 90, 450, -1));
-
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/imagenes/logo_for_a_pharmaceutical_company__1_-removebg-preview.png"))); // NOI18N
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 90, -1, -1));
 
@@ -170,7 +166,6 @@ public class RecetaMedica extends javax.swing.JFrame {
     private javax.swing.JLabel LabelEmitidaPor;
     private javax.swing.JLabel LabelFirmaDoctor;
     private javax.swing.JLabel LabelRecetaMedica;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;

@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package Vistas;
+package vistas;
 
 /**
  *
@@ -69,7 +69,7 @@ public class AccesoHistorialMedico extends javax.swing.JFrame {
         jLabel2.setText("Para acceder al historial medico ingrese de nuevo su contraseña ");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 600, 550, -1));
 
-        LabelFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondo prueba 3.jpg"))); // NOI18N
+        LabelFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/imagenes/fondo prueba 3.jpg"))); // NOI18N
         getContentPane().add(LabelFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -1, -1, 880));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/imagenes/fondo prueba 3.jpg"))); // NOI18N

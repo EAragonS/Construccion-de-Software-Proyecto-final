@@ -7,10 +7,10 @@ import modelo.ReciboConsulta;
 
 public class ReciboConsultaDAO {
 
-    private Connection connection;
+    private Connection conexion;
 
-    public ReciboConsultaDAO(Connection connection) {
-        this.connection = connection;
+    public ReciboConsultaDAO(Connection conexion) {
+        this.conexion = conexion;
     }
 
     // Create: Insertar un nuevo recibo de consulta
@@ -18,7 +18,7 @@ public class ReciboConsultaDAO {
                                           double montoPagado, double montoCambio) {
         String query = "INSERT INTO reciboConsulta (idConsulta, fechaGeneracion, horaGeneracion, montoPagado, montoCambio) " +
                        "VALUES (?, ?, ?, ?, ?)";
-        try (PreparedStatement stmt = connection.prepareStatement(query)) {
+        try (PreparedStatement stmt = conexion.prepareStatement(query)) {
             stmt.setInt(1, idConsulta);
             stmt.setDate(2, fechaGeneracion);
             stmt.setTime(3, horaGeneracion);
@@ -35,7 +35,7 @@ public class ReciboConsultaDAO {
     public List<ReciboConsulta> obtenerRecibosConsulta() {
         List<ReciboConsulta> recibos = new ArrayList<>();
         String query = "SELECT * FROM reciboConsulta";
-        try (Statement stmt = connection.createStatement();
+        try (Statement stmt = conexion.createStatement();
              ResultSet rs = stmt.executeQuery(query)) {
 
             while (rs.next()) {
@@ -58,7 +58,7 @@ public class ReciboConsultaDAO {
     // Update: Actualizar un recibo de consulta
     public boolean actualizarReciboConsulta(int idReciboConsulta, double montoPagado, double montoCambio) {
         String query = "UPDATE reciboConsulta SET montoPagado = ?, montoCambio = ? WHERE idReciboConsulta = ?";
-        try (PreparedStatement stmt = connection.prepareStatement(query)) {
+        try (PreparedStatement stmt = conexion.prepareStatement(query)) {
             stmt.setDouble(1, montoPagado);
             stmt.setDouble(2, montoCambio);
             stmt.setInt(3, idReciboConsulta);
@@ -72,7 +72,7 @@ public class ReciboConsultaDAO {
     // Delete: Eliminar un recibo de consulta
     public boolean eliminarReciboConsulta(int idReciboConsulta) {
         String query = "DELETE FROM reciboConsulta WHERE idReciboConsulta = ?";
-        try (PreparedStatement stmt = connection.prepareStatement(query)) {
+        try (PreparedStatement stmt = conexion.prepareStatement(query)) {
             stmt.setInt(1, idReciboConsulta);
             return stmt.executeUpdate() > 0;
         } catch (SQLException e) {

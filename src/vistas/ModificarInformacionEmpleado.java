@@ -1,23 +1,25 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
-package Vistas;
+package vistas;
 
-/**
- *
- * @author Javier
- */
+import controlador.ModificarInformacionEmpleadoController;
+
 public class ModificarInformacionEmpleado extends javax.swing.JFrame {
+    private ModificarInformacionEmpleadoController controlador;
+    private javax.swing.JButton BtnGuardar; // Declaración del botón
 
-    /**
-     * Creates new form ModificarInformacionEmpleado
-     */
-    public ModificarInformacionEmpleado() {
+
+    public ModificarInformacionEmpleado(ModificarInformacionEmpleadoController controlador) {
+        this.controlador = controlador;
         initComponents();
         this.setLocationRelativeTo(null);
     }
 
+    public javax.swing.JButton getBtnCancelar() {
+        return BtnCancelar;
+    }
+
+    public javax.swing.JButton getBtnGuardar() {
+        return BtnGuardar;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -299,6 +301,11 @@ public class ModificarInformacionEmpleado extends javax.swing.JFrame {
         BtnCancelar.setForeground(new java.awt.Color(0, 51, 255));
         BtnCancelar.setText("Cancelar");
         BtnCancelar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        BtnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnCancelarActionPerformed(evt);
+            }
+        });
         getContentPane().add(BtnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 520, -1, -1));
 
         jPanel11.setBackground(new java.awt.Color(0, 102, 102));
@@ -375,6 +382,10 @@ public class ModificarInformacionEmpleado extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void BtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCancelarActionPerformed
+        //
+    }//GEN-LAST:event_BtnCancelarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -405,7 +416,6 @@ public class ModificarInformacionEmpleado extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ModificarInformacionEmpleado().setVisible(true);
             }
         });
     }

@@ -1,24 +1,19 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
-package Vistas;
+package vistas;
 
-import javax.swing.ImageIcon;
+import controlador.LoginController;
+import controlador.VentanaManager;
 
-/**
- *
- * @author Javier
- */
 public class Login extends javax.swing.JFrame {
+    private LoginController controlador;
 
-    /**
-     * Creates new form Login
-     */
-    public Login() {
-    initComponents();
-    this.setLocationRelativeTo(null);
-}
+     public Login(LoginController controlador) {
+        this.controlador = controlador;
+        initComponents();
+        this.setLocationRelativeTo(null);
+
+    }
+
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -28,13 +23,16 @@ public class Login extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
         CampoUsuario = new javax.swing.JTextField();
         LabelLogo = new javax.swing.JLabel();
         CampoContraseña = new javax.swing.JTextField();
         BtnEntrar = new javax.swing.JButton();
         BtnSalir = new javax.swing.JButton();
         LabelFondo = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/imagenes/fondo prueba 3.jpg"))); // NOI18N
+        jLabel1.setText("jLabel1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -53,7 +51,7 @@ public class Login extends javax.swing.JFrame {
 
         LabelLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/imagenes/logo_for_a_pharmaceutical_company__1_-removebg-preview.png"))); // NOI18N
         LabelLogo.setText("jLabel1");
-        getContentPane().add(LabelLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 140, 460, 350));
+        getContentPane().add(LabelLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 140, 460, 350));
 
         CampoContraseña.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         CampoContraseña.setForeground(new java.awt.Color(204, 204, 204));
@@ -64,6 +62,11 @@ public class Login extends javax.swing.JFrame {
         BtnEntrar.setText("Entrar");
         BtnEntrar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         BtnEntrar.setBorderPainted(false);
+        BtnEntrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnEntrarActionPerformed(evt);
+            }
+        });
         getContentPane().add(BtnEntrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 710, 70, -1));
 
         BtnSalir.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -77,12 +80,8 @@ public class Login extends javax.swing.JFrame {
         });
         getContentPane().add(BtnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 20, 60, -1));
 
-        LabelFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondo prueba 3.jpg"))); // NOI18N
+        LabelFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/imagenes/fondo prueba 3.jpg"))); // NOI18N
         getContentPane().add(LabelFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -1, -1, 880));
-
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/imagenes/fondo prueba 3.jpg"))); // NOI18N
-        jLabel1.setText("jLabel1");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -92,8 +91,12 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_CampoUsuarioActionPerformed
 
     private void BtnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSalirActionPerformed
-        System.exit(0);
+         controlador.manejarSalir();
     }//GEN-LAST:event_BtnSalirActionPerformed
+
+    private void BtnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEntrarActionPerformed
+        controlador.manejarEntrar();
+    }//GEN-LAST:event_BtnEntrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -104,6 +107,8 @@ public class Login extends javax.swing.JFrame {
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
+        VentanaManager manager = new VentanaManager(); // Inicializa el gestor de ventanas
+        manager.mostrarLogin(); // Muestra la ventana de login
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -125,7 +130,6 @@ public class Login extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Login().setVisible(true);
             }
         });
     }

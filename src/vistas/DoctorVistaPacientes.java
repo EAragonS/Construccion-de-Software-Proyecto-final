@@ -2,20 +2,50 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package Vistas;
+package vistas;
+
+import controlador.DoctorVistaPacientesController;
+import controlador.VentanaManager;
+import javax.swing.JButton;
+import javax.swing.JToggleButton;
 
 /**
  *
  * @author Javier
  */
 public class DoctorVistaPacientes extends javax.swing.JFrame {
+    private DoctorVistaPacientesController controlador;
 
-    /**
-     * Creates new form DoctorVistaPacientes
-     */
-    public DoctorVistaPacientes() {
+    public DoctorVistaPacientes(DoctorVistaPacientesController controlador) {
+        this.controlador = controlador;
         initComponents();
+        this.setLocationRelativeTo(null);
+
+        // Vincular botones al controlador
+        BtnCerrarSesion.addActionListener(controlador);
+        BtnConsultarHistorial.addActionListener(controlador);
+        BtnEditarHistorial.addActionListener(controlador);
+        BtnSalir.addActionListener(controlador);
     }
+    
+     // Getters para los botones
+    public JButton getBtnSalir() {
+        return BtnSalir;
+    }
+
+    public JButton getBtnCerrarSesion() {
+        return BtnCerrarSesion;
+    }
+
+    public JButton getBtnConsultarHistorial() {
+        return BtnConsultarHistorial;
+    }
+
+    public JButton getBtnEditarHistorial() {
+        return BtnEditarHistorial;
+    }
+
+ 
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -28,13 +58,13 @@ public class DoctorVistaPacientes extends javax.swing.JFrame {
 
         BtnSalir = new javax.swing.JButton();
         LabelNombrePaciente = new javax.swing.JLabel();
-        BtnConsultarHistorial = new javax.swing.JToggleButton();
         BtnCerrarSesion = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         CampoBuscarPorNombre = new javax.swing.JTextField();
-        BtnEditarHistorial = new javax.swing.JButton();
         BtnEliminarPaciente = new javax.swing.JButton();
+        BtnConsultarHistorial = new javax.swing.JButton();
+        BtnEditarHistorial = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -52,13 +82,6 @@ public class DoctorVistaPacientes extends javax.swing.JFrame {
 
         LabelNombrePaciente.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         LabelNombrePaciente.setText("Nombre del paciente");
-
-        BtnConsultarHistorial.setBackground(new java.awt.Color(0, 102, 102));
-        BtnConsultarHistorial.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        BtnConsultarHistorial.setForeground(new java.awt.Color(255, 255, 255));
-        BtnConsultarHistorial.setText("Consultar historial medico");
-        BtnConsultarHistorial.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        BtnConsultarHistorial.setBorderPainted(false);
 
         BtnCerrarSesion.setBackground(new java.awt.Color(255, 153, 0));
         BtnCerrarSesion.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -93,19 +116,32 @@ public class DoctorVistaPacientes extends javax.swing.JFrame {
         CampoBuscarPorNombre.setText("Buscar paciente por nombre");
         CampoBuscarPorNombre.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        BtnEditarHistorial.setBackground(new java.awt.Color(0, 102, 102));
-        BtnEditarHistorial.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        BtnEditarHistorial.setForeground(new java.awt.Color(255, 255, 255));
-        BtnEditarHistorial.setText("Editar historial medico");
-        BtnEditarHistorial.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        BtnEditarHistorial.setBorderPainted(false);
-
         BtnEliminarPaciente.setBackground(new java.awt.Color(0, 102, 102));
         BtnEliminarPaciente.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         BtnEliminarPaciente.setForeground(new java.awt.Color(255, 255, 255));
         BtnEliminarPaciente.setText("Eliminar paciente");
         BtnEliminarPaciente.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         BtnEliminarPaciente.setBorderPainted(false);
+
+        BtnConsultarHistorial.setBackground(new java.awt.Color(0, 102, 102));
+        BtnConsultarHistorial.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        BtnConsultarHistorial.setForeground(new java.awt.Color(255, 255, 255));
+        BtnConsultarHistorial.setText("Consultar historial médico");
+        BtnConsultarHistorial.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnConsultarHistorialActionPerformed(evt);
+            }
+        });
+
+        BtnEditarHistorial.setBackground(new java.awt.Color(0, 102, 102));
+        BtnEditarHistorial.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        BtnEditarHistorial.setForeground(new java.awt.Color(255, 255, 255));
+        BtnEditarHistorial.setText("Editar historial médico");
+        BtnEditarHistorial.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnEditarHistorialActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -117,22 +153,22 @@ public class DoctorVistaPacientes extends javax.swing.JFrame {
                         .addGap(14, 14, 14)
                         .addComponent(jScrollPane1))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(BtnConsultarHistorial)
-                            .addComponent(CampoBuscarPorNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 554, Short.MAX_VALUE)
+                                .addGap(22, 22, 22)
+                                .addComponent(CampoBuscarPorNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(42, 42, 42)
+                                .addComponent(BtnConsultarHistorial)))
+                        .addGap(131, 131, 131)
+                        .addComponent(BtnEditarHistorial)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 177, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
                                 .addComponent(BtnCerrarSesion)
                                 .addGap(33, 33, 33)
                                 .addComponent(BtnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(75, 75, 75)
-                                .addComponent(BtnEditarHistorial)
-                                .addGap(112, 112, 112)
-                                .addComponent(BtnEliminarPaciente)
-                                .addGap(0, 0, Short.MAX_VALUE)))))
+                            .addComponent(BtnEliminarPaciente))))
                 .addGap(21, 21, 21))
             .addGroup(layout.createSequentialGroup()
                 .addGap(53, 53, 53)
@@ -147,11 +183,11 @@ public class DoctorVistaPacientes extends javax.swing.JFrame {
                     .addComponent(BtnCerrarSesion)
                     .addComponent(BtnSalir)
                     .addComponent(CampoBuscarPorNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(BtnEliminarPaciente)
                     .addComponent(BtnConsultarHistorial)
-                    .addComponent(BtnEditarHistorial)
-                    .addComponent(BtnEliminarPaciente))
+                    .addComponent(BtnEditarHistorial))
                 .addGap(28, 28, 28)
                 .addComponent(LabelNombrePaciente)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -169,6 +205,14 @@ public class DoctorVistaPacientes extends javax.swing.JFrame {
     private void BtnCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCerrarSesionActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_BtnCerrarSesionActionPerformed
+
+    private void BtnEditarHistorialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEditarHistorialActionPerformed
+       controlador.manejarEditarHistorial();
+    }//GEN-LAST:event_BtnEditarHistorialActionPerformed
+
+    private void BtnConsultarHistorialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnConsultarHistorialActionPerformed
+        controlador.manejarConsultarHistorial();
+    }//GEN-LAST:event_BtnConsultarHistorialActionPerformed
 
     /**
      * @param args the command line arguments
@@ -200,14 +244,17 @@ public class DoctorVistaPacientes extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new DoctorVistaPacientes().setVisible(true);
+            VentanaManager manager = new VentanaManager(); // Crear el VentanaManager
+            DoctorVistaPacientesController controller = new DoctorVistaPacientesController(manager);
+            DoctorVistaPacientes vista = new DoctorVistaPacientes(controller); // Pasar el controlador al constructor
+            vista.setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnCerrarSesion;
-    private javax.swing.JToggleButton BtnConsultarHistorial;
+    private javax.swing.JButton BtnConsultarHistorial;
     private javax.swing.JButton BtnEditarHistorial;
     private javax.swing.JButton BtnEliminarPaciente;
     private javax.swing.JButton BtnSalir;

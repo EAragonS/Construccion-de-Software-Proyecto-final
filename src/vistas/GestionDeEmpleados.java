@@ -1,22 +1,32 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
-package Vistas;
+package vistas;
 
-/**
- *
- * @author Javier
- */
+import controlador.GestionDeEmpleadosController;
+import controlador.VentanaManager;
+
 public class GestionDeEmpleados extends javax.swing.JFrame {
+    private GestionDeEmpleadosController controlador;
 
-    /**
-     * Creates new form GestioDeEmpleados
-     */
-    public GestionDeEmpleados() {
+    public GestionDeEmpleados(GestionDeEmpleadosController controlador) {
+        this.controlador = controlador;
         initComponents();
         this.setLocationRelativeTo(null);
+        BtnAgregarEmpleado.addActionListener(controlador);
+        BtnConsultarInformacion.addActionListener(controlador);
+        BtnEditarInformacion.addActionListener(controlador);
     }
+
+    public javax.swing.JButton getBtnAgregarEmpleado() {
+        return BtnAgregarEmpleado;
+    }
+
+    public javax.swing.JButton getBtnConsultarInformacion() {
+        return BtnConsultarInformacion;
+    }
+
+    public javax.swing.JButton getBtnEditarInformacion() {
+        return BtnEditarInformacion;
+    }
+
     
 
     /**
@@ -86,12 +96,22 @@ public class GestionDeEmpleados extends javax.swing.JFrame {
         BtnAgregarEmpleado.setForeground(new java.awt.Color(255, 255, 255));
         BtnAgregarEmpleado.setText("Agregar empleado");
         BtnAgregarEmpleado.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        BtnAgregarEmpleado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnAgregarEmpleadoActionPerformed(evt);
+            }
+        });
 
         BtnConsultarInformacion.setBackground(new java.awt.Color(0, 102, 102));
         BtnConsultarInformacion.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         BtnConsultarInformacion.setForeground(new java.awt.Color(255, 255, 255));
         BtnConsultarInformacion.setText("Consultar información");
         BtnConsultarInformacion.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        BtnConsultarInformacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnConsultarInformacionActionPerformed(evt);
+            }
+        });
 
         BtnEditarInformacion.setBackground(new java.awt.Color(0, 102, 102));
         BtnEditarInformacion.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -189,7 +209,6 @@ public class GestionDeEmpleados extends javax.swing.JFrame {
                                 .addGap(59, 59, 59)
                                 .addComponent(BtnEliminarEmpleado))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(LabelFechaIngreso)
                                 .addGap(37, 37, 37)))))
                 .addGap(55, 55, 55))
@@ -238,7 +257,7 @@ public class GestionDeEmpleados extends javax.swing.JFrame {
     }//GEN-LAST:event_ComboTipoDeEmpleadoActionPerformed
 
     private void BtnEditarInformacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEditarInformacionActionPerformed
-        // TODO add your handling code here:
+        controlador.mostrarModificarInformacionEmpleado();
     }//GEN-LAST:event_BtnEditarInformacionActionPerformed
 
     private void BtnCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCerrarSesionActionPerformed
@@ -249,10 +268,20 @@ public class GestionDeEmpleados extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_BtnSalirActionPerformed
 
+    private void BtnAgregarEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAgregarEmpleadoActionPerformed
+        controlador.mostrarAñadirEmpleado();
+    }//GEN-LAST:event_BtnAgregarEmpleadoActionPerformed
+
+    private void BtnConsultarInformacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnConsultarInformacionActionPerformed
+          controlador.mostrarInformacionEmpleado();
+    }//GEN-LAST:event_BtnConsultarInformacionActionPerformed
+
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
+        VentanaManager manager = new VentanaManager();
+        manager.mostrarGestionDeEmpleados(); 
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -280,7 +309,6 @@ public class GestionDeEmpleados extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GestionDeEmpleados().setVisible(true);
             }
         });
     }

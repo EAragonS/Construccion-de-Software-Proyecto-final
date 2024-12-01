@@ -7,16 +7,16 @@ import modelo.Receta;
 
 public class RecetaDAO {
 
-    private Connection connection;
+    private Connection conexion;
 
-    public RecetaDAO(Connection connection) {
-        this.connection = connection;
+    public RecetaDAO(Connection conexion) {
+        this.conexion = conexion;
     }
 
     // Create: Insertar una nueva receta
     public boolean insertarReceta(int idConsulta, String nombreMedicamento, String dosis, String duracionConsumo) {
         String query = "INSERT INTO receta (idConsulta, nombreMedicamento, dosis, duracionConsumo) VALUES (?, ?, ?, ?)";
-        try (PreparedStatement stmt = connection.prepareStatement(query)) {
+        try (PreparedStatement stmt = conexion.prepareStatement(query)) {
             stmt.setInt(1, idConsulta);
             stmt.setString(2, nombreMedicamento);
             stmt.setString(3, dosis);
@@ -32,7 +32,7 @@ public class RecetaDAO {
     public List<Receta> obtenerRecetas() {
         List<Receta> recetas = new ArrayList<>();
         String query = "SELECT * FROM receta";
-        try (Statement stmt = connection.createStatement();
+        try (Statement stmt = conexion.createStatement();
              ResultSet rs = stmt.executeQuery(query)) {
 
             while (rs.next()) {
@@ -54,7 +54,7 @@ public class RecetaDAO {
     // Update: Actualizar una receta
     public boolean actualizarReceta(int idReceta, String nombreMedicamento, String dosis, String duracionConsumo) {
         String query = "UPDATE receta SET nombreMedicamento = ?, dosis = ?, duracionConsumo = ? WHERE idReceta = ?";
-        try (PreparedStatement stmt = connection.prepareStatement(query)) {
+        try (PreparedStatement stmt = conexion.prepareStatement(query)) {
             stmt.setString(1, nombreMedicamento);
             stmt.setString(2, dosis);
             stmt.setString(3, duracionConsumo);
@@ -69,7 +69,7 @@ public class RecetaDAO {
     // Delete: Eliminar una receta
     public boolean eliminarReceta(int idReceta) {
         String query = "DELETE FROM receta WHERE idReceta = ?";
-        try (PreparedStatement stmt = connection.prepareStatement(query)) {
+        try (PreparedStatement stmt = conexion.prepareStatement(query)) {
             stmt.setInt(1, idReceta);
             return stmt.executeUpdate() > 0;
         } catch (SQLException e) {
