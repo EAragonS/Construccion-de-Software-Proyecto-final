@@ -1,4 +1,4 @@
-package modelo.dao; //Listo
+package modelo.dao; 
 
 import modelo.Recepcionista;
 import java.sql.*;

@@ -17,30 +17,28 @@ public class DoctorDAO extends DAO<Doctor> {
         );
     }
 
-@Override
-public List<Doctor> consultar() {
-    String sql = "SELECT d.idDoctor, d.cedula, d.especialidad, d.precioConsulta, d.numConsultorio, " +
-                 "e.idEmpleado, e.nombreCompletoE, e.fechaIngreso, e.correoElectronicoE, " +
-                 "e.numTelefonoE, e.nombreUsuario, e.contrasena " +
-                 "FROM doctor d " +
-                 "JOIN empleado e ON d.idDoctor = e.idEmpleado";
-    return ejecutarConsulta(sql, rs -> new Doctor(
-        rs.getInt("idDoctor"),
-        rs.getString("cedula"),
-        rs.getString("especialidad"),
-        rs.getDouble("precioConsulta"),
-        rs.getInt("numConsultorio"),
-        rs.getInt("idEmpleado"), 
-        rs.getString("nombreCompletoE"), 
-        rs.getDate("fechaIngreso"), 
-        rs.getString("correoElectronicoE"),
-        rs.getString("numTelefonoE"),
-        rs.getString("nombreUsuario"),
-        rs.getString("contrasena")
-    ));
-}
-
-
+    @Override
+    public List<Doctor> consultar() {
+        String sql = "SELECT d.idDoctor, d.cedula, d.especialidad, d.precioConsulta, d.numConsultorio, " +
+                     "e.idEmpleado, e.nombreCompletoE, e.fechaIngreso, e.correoElectronicoE, " +
+                     "e.numTelefonoE, e.nombreUsuario, e.contrasena " +
+                     "FROM doctor d " +
+                     "JOIN empleado e ON d.idDoctor = e.idEmpleado";
+        return ejecutarConsulta(sql, rs -> new Doctor(
+            rs.getInt("idDoctor"),
+            rs.getString("cedula"),
+            rs.getString("especialidad"),
+            rs.getDouble("precioConsulta"),
+            rs.getInt("numConsultorio"),
+            rs.getInt("idEmpleado"), 
+            rs.getString("nombreCompletoE"), 
+            rs.getDate("fechaIngreso"), 
+            rs.getString("correoElectronicoE"),
+            rs.getString("numTelefonoE"),
+            rs.getString("nombreUsuario"),
+            rs.getString("contrasena")
+        ));
+    }
 
 
     @Override

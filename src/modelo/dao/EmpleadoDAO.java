@@ -1,4 +1,4 @@
-package modelo.dao; //Listo
+package modelo.dao; 
 
 import modelo.Empleado;
 import java.sql.Connection;
@@ -53,5 +53,21 @@ public class EmpleadoDAO extends DAO<Empleado> {
     public boolean eliminar(int id) {
         String query = "DELETE FROM empleado WHERE idEmpleado = ?";
         return ejecutarActualizacion(query, id);
+    }
+    
+    // Dentro de EmpleadoDAO
+    public Empleado buscarPorId(int idEmpleado) {
+        String query = "SELECT * FROM empleado WHERE idEmpleado = ?";
+        List<Empleado> resultados = ejecutarConsulta(query, rs -> new Empleado(
+            rs.getInt("idEmpleado"),
+            rs.getString("nombreCompletoE"),
+            rs.getDate("fechaIngreso"),
+            rs.getString("correoElectronicoE"),
+            rs.getString("numTelefonoE"),
+            rs.getString("nombreUsuario"),
+            rs.getString("contrasena")
+        ), idEmpleado);
+
+        return resultados.isEmpty() ? null : resultados.get(0);
     }
 }

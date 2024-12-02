@@ -1,4 +1,4 @@
-package modelo.dao;//Listo
+package modelo.dao;
 
 import modelo.Paciente;
 import java.util.List;
