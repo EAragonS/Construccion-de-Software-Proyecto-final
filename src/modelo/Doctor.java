@@ -1,20 +1,27 @@
 package modelo;
 
-public class Doctor {
+import java.sql.Date;
+
+public class Doctor extends Empleado {
     private int idDoctor;
-    private String nombre;
+    private String cedula;
     private String especialidad;
-    private String telefono;
-    private String correo;
+    private double precioConsulta; // Cambié el tipo de dato a double
+    private int numConsultorio; // Cambié el tipo de dato a int
 
-    public Doctor() {}
+    public Doctor() {
+        super();
+    }
 
-    public Doctor(int idDoctor, String nombre, String especialidad, String telefono, String correo) {
+    public Doctor(int idDoctor, String cedula, String especialidad, double precioConsulta, int numConsultorio, 
+                  int idEmpleado, String nombreCompleto, Date fechaIngreso, String correoElectronico, 
+                  String numTelefono, String nombreUsuario, String contrasena) {
+        super(idEmpleado, nombreCompleto, fechaIngreso, correoElectronico, numTelefono, nombreUsuario, contrasena);
         this.idDoctor = idDoctor;
-        this.nombre = nombre;
+        this.cedula = cedula;
         this.especialidad = especialidad;
-        this.telefono = telefono;
-        this.correo = correo;
+        this.precioConsulta = precioConsulta;
+        this.numConsultorio = numConsultorio;
     }
 
     public int getIdDoctor() {
@@ -25,12 +32,12 @@ public class Doctor {
         this.idDoctor = idDoctor;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getCedula() {
+        return cedula;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setCedula(String cedula) {
+        this.cedula = cedula;
     }
 
     public String getEspecialidad() {
@@ -41,30 +48,37 @@ public class Doctor {
         this.especialidad = especialidad;
     }
 
-    public String getTelefono() {
-        return telefono;
+    public double getPrecioConsulta() {
+        return precioConsulta;
     }
 
-    public void setTelefono(String telefono) {
-        this.telefono = telefono;
+    public void setPrecioConsulta(double precioConsulta) {
+        this.precioConsulta = precioConsulta;
     }
 
-    public String getCorreo() {
-        return correo;
+    public int getNumConsultorio() {
+        return numConsultorio;
     }
 
-    public void setCorreo(String correo) {
-        this.correo = correo;
+    public void setNumConsultorio(int numConsultorio) {
+        this.numConsultorio = numConsultorio;
     }
 
     @Override
     public String toString() {
         return "Doctor{" +
                 "idDoctor=" + idDoctor +
-                ", nombre='" + nombre + '\'' +
+                ", cedula='" + cedula + '\'' +
                 ", especialidad='" + especialidad + '\'' +
-                ", telefono='" + telefono + '\'' +
-                ", correo='" + correo + '\'' +
+                ", precioConsulta=" + precioConsulta +
+                ", numConsultorio=" + numConsultorio +
+                ", idEmpleado=" + getIdEmpleado() +
+                ", nombreCompleto='" + getNombreCompleto() + '\'' +
+                ", fechaIngreso=" + getFechaIngreso() +
+                ", correoElectronico='" + getCorreoElectronico() + '\'' +
+                ", numTelefono='" + getNumTelefono() + '\'' +
+                ", nombreUsuario='" + getNombreUsuario() + '\'' +
+                ", contrasena='" + getContrasena() + '\'' +
                 '}';
     }
 }

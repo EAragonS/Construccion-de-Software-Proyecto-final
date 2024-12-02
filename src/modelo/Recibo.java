@@ -3,8 +3,8 @@ package modelo;
 import java.sql.Date;
 import java.sql.Time;
 
-public class ReciboConsulta {
-    private int idReciboConsulta;
+public class Recibo {
+    private int idRecibo;
     private int idConsulta;
     private Date fechaGeneracion;
     private Time horaGeneracion;
@@ -12,13 +12,13 @@ public class ReciboConsulta {
     private double montoCambio;
 
     // Constructor vacío
-    public ReciboConsulta() {
+    public Recibo() {
     }
 
     // Constructor con todos los atributos
-    public ReciboConsulta(int idReciboConsulta, int idConsulta, Date fechaGeneracion, Time horaGeneracion, 
+    public Recibo(int idRecibo, int idConsulta, Date fechaGeneracion, Time horaGeneracion, 
                           double montoPagado, double montoCambio) {
-        this.idReciboConsulta = idReciboConsulta;
+        this.idRecibo = idRecibo;
         this.idConsulta = idConsulta;
         this.fechaGeneracion = fechaGeneracion;
         this.horaGeneracion = horaGeneracion;
@@ -27,12 +27,12 @@ public class ReciboConsulta {
     }
 
     // Getters y Setters
-    public int getIdReciboConsulta() {
-        return idReciboConsulta;
+    public int getIdRecibo() {
+        return idRecibo;
     }
 
-    public void setIdReciboConsulta(int idReciboConsulta) {
-        this.idReciboConsulta = idReciboConsulta;
+    public void setIdRecibo(int idRecibo) {
+        this.idRecibo = idRecibo;
     }
 
     public int getIdConsulta() {
@@ -77,8 +77,8 @@ public class ReciboConsulta {
 
     @Override
     public String toString() {
-        return "ReciboConsulta{" +
-                "idReciboConsulta=" + idReciboConsulta +
+        return "Recibo{" +
+                "idRecibo=" + idRecibo +
                 ", idConsulta=" + idConsulta +
                 ", fechaGeneracion=" + fechaGeneracion +
                 ", horaGeneracion=" + horaGeneracion +
@@ -86,4 +86,4 @@ public class ReciboConsulta {
                 ", montoCambio=" + montoCambio +
                 '}';
     }
-}
+}  

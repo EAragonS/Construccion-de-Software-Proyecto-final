@@ -1,4 +1,4 @@
-package dao;
+package modelo.dao;
 
 import java.sql.*;
 import java.util.ArrayList;
