@@ -2,6 +2,7 @@ package vistas;
 
 import controlador.LoginController;
 import controlador.VentanaManager;
+import javax.swing.JOptionPane;
 
 public class Login extends javax.swing.JFrame {
     private LoginController controlador;
@@ -11,6 +12,18 @@ public class Login extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
 
+    }
+     
+     public String getCampoUsuario() {
+        return CampoUsuario.getText().trim();
+    }
+     
+     public String getCampoContraseña() {
+        return CampoContraseña.getText().trim();
+    }
+     
+     public void mostrarMensaje(String mensaje) {
+        JOptionPane.showMessageDialog(this, mensaje);
     }
 
 
