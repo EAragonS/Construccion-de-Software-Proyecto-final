@@ -32,7 +32,10 @@ public class Recibo {
     }
 
     public void setIdRecibo(int idRecibo) {
-        this.idRecibo = idRecibo;
+    if (idRecibo < 0) {
+        throw new IllegalArgumentException("El idRecibo no puede ser negativo");
+    }
+    this.idRecibo = idRecibo;
     }
 
     public int getIdConsulta() {
@@ -64,7 +67,10 @@ public class Recibo {
     }
 
     public void setMontoPagado(double montoPagado) {
-        this.montoPagado = montoPagado;
+    if (montoPagado < 0) {
+        throw new IllegalArgumentException("El monto pagado no puede ser negativo");
+    }
+    this.montoPagado = montoPagado;
     }
 
     public double getMontoCambio() {
@@ -72,7 +78,10 @@ public class Recibo {
     }
 
     public void setMontoCambio(double montoCambio) {
-        this.montoCambio = montoCambio;
+    if (montoCambio < 0) {
+        throw new IllegalArgumentException("El monto de cambio no puede ser negativo");
+    }
+    this.montoCambio = montoCambio;
     }
 
     @Override

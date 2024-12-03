@@ -37,8 +37,11 @@ public class Doctor extends Empleado {
     }
 
     public void setCedula(String cedula) {
-        this.cedula = cedula;
+    if (cedula == null || cedula.trim().isEmpty()) {
+        throw new IllegalArgumentException("La cédula no puede ser nula o vacía");
     }
+    this.cedula = cedula;
+}
 
     public String getEspecialidad() {
         return especialidad;
@@ -53,8 +56,11 @@ public class Doctor extends Empleado {
     }
 
     public void setPrecioConsulta(double precioConsulta) {
-        this.precioConsulta = precioConsulta;
+    if (precioConsulta < 0) {
+        throw new IllegalArgumentException("El precio de consulta no puede ser negativo");
     }
+    this.precioConsulta = precioConsulta;
+}
 
     public int getNumConsultorio() {
         return numConsultorio;

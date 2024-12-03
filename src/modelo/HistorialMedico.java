@@ -28,9 +28,11 @@ public class HistorialMedico {
     }
 
     public void setIdHistorial(int idHistorial) {
-        this.idHistorial = idHistorial;
+    if (idHistorial < 0) {
+        throw new IllegalArgumentException("El idHistorial no puede ser negativo");
     }
-
+    this.idHistorial = idHistorial;
+}
     public int getIdPaciente() {
         return idPaciente;
     }
@@ -44,8 +46,11 @@ public class HistorialMedico {
     }
 
     public void setEnfermedadesPrevias(String enfermedadesPrevias) {
-        this.enfermedadesPrevias = enfermedadesPrevias;
+    if (enfermedadesPrevias == null || enfermedadesPrevias.trim().isEmpty()) {
+        throw new IllegalArgumentException("Las enfermedades previas no pueden ser nulas o vacías");
     }
+    this.enfermedadesPrevias = enfermedadesPrevias;
+}
 
     public String getAlergias() {
         return alergias;

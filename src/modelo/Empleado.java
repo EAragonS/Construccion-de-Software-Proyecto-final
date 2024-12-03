@@ -57,8 +57,11 @@ public class Empleado {
     }
 
     public void setCorreoElectronico(String correoElectronico) {
-        this.correoElectronico = correoElectronico;
+    if (correoElectronico == null || !correoElectronico.matches("^[A-Za-z0-9+_.-]+@(.+)$")) {
+        throw new IllegalArgumentException("El correo electrónico no es válido");
     }
+    this.correoElectronico = correoElectronico;
+}
 
     public String getNumTelefono() {
         return numTelefono;
@@ -81,8 +84,11 @@ public class Empleado {
     }
 
     public void setContrasena(String contrasena) {
-        this.contrasena = contrasena;
+    if (contrasena == null || contrasena.trim().isEmpty()) {
+        throw new IllegalArgumentException("La contraseña no puede ser nula o vacía");
     }
+    this.contrasena = contrasena;
+}
 
     @Override
     public String toString() {

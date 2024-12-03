@@ -21,16 +21,23 @@ public class Consulta {
     }
 
     public void setIdConsulta(int idConsulta) {
-        this.idConsulta = idConsulta;
+    if (idConsulta < 0) {
+        throw new IllegalArgumentException("idConsulta no puede ser negativo");
     }
+    this.idConsulta = idConsulta;
+}
+
 
     public int getIdCita() {
         return idCita;
     }
 
     public void setIdCita(int idCita) {
-        this.idCita = idCita;
+    if (idCita < 0) {
+        throw new IllegalArgumentException("idCita no puede ser negativo");
     }
+    this.idCita = idCita;
+}
 
     public String getMotivo() {
         return motivo;

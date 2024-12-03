@@ -15,17 +15,23 @@ public class Administrador {
         return idAdministrador;
     }
 
-    public void setIdAdministrador(int idAdministrador) {
-        this.idAdministrador = idAdministrador;
+   public void setIdAdministrador(int idAdministrador) {
+    if (idAdministrador < 0) {
+        throw new IllegalArgumentException("idAdministrador no puede ser negativo");
     }
+    this.idAdministrador = idAdministrador;
+}
 
     public String getNombre() {
         return nombre;
     }
 
     public void setNombre(String nombre) {
-        this.nombre = nombre;
+    if (nombre == null || nombre.trim().isEmpty()) {
+        throw new IllegalArgumentException("El nombre no puede ser nulo o vacío");
     }
+    this.nombre = nombre;
+}
 
     @Override
     public String toString() {

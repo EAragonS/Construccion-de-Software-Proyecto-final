@@ -27,8 +27,11 @@ public class MedicamentoPrescrito {
     }
 
     public void setIdReceta(int idReceta) {
-        this.idReceta = idReceta;
+    if (idReceta < 0) {
+        throw new IllegalArgumentException("El idReceta no puede ser negativo");
     }
+    this.idReceta = idReceta;
+}
 
     public int getIdMedicamento() {
         return idMedicamento;
@@ -43,16 +46,22 @@ public class MedicamentoPrescrito {
     }
 
     public void setNombreMedicamento(String nombreMedicamento) {
-        this.nombreMedicamento = nombreMedicamento;
+    if (nombreMedicamento == null || nombreMedicamento.trim().isEmpty()) {
+        throw new IllegalArgumentException("El nombre del medicamento no puede ser nulo o vacío");
     }
+    this.nombreMedicamento = nombreMedicamento;
+}
 
     public String getDosis() {
         return dosis;
     }
 
     public void setDosis(String dosis) {
-        this.dosis = dosis;
+    if (dosis == null || dosis.trim().isEmpty()) {
+        throw new IllegalArgumentException("La dosis no puede ser nula o vacía");
     }
+    this.dosis = dosis;
+}
 
     public String getDuracionConsumo() {
         return duracionConsumo;

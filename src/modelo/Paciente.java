@@ -35,7 +35,10 @@ public class Paciente {
     }
 
     public void setIdPaciente(int idPaciente) {
-        this.idPaciente = idPaciente;
+    if (idPaciente < 0) {
+        throw new IllegalArgumentException("El idPaciente no puede ser negativo");
+    }
+    this.idPaciente = idPaciente;
     }
 
     public String getNombreCompletoP() {
@@ -51,8 +54,11 @@ public class Paciente {
     }
 
     public void setSexo(String sexo) {
-        this.sexo = sexo;
+    if (!sexo.equals("Masculino") && !sexo.equals("Femenino")) {
+        throw new IllegalArgumentException("El sexo debe ser 'Masculino' o 'Femenino'");
     }
+    this.sexo = sexo;
+}
 
     public Date getFechaNacimiento() {
         return fechaNacimiento;
@@ -67,7 +73,10 @@ public class Paciente {
     }
 
     public void setCorreoElectronicoP(String correoElectronicoP) {
-        this.correoElectronicoP = correoElectronicoP;
+    if (correoElectronicoP == null || !correoElectronicoP.matches("^[A-Za-z0-9+_.-]+@(.+)$")) {
+        throw new IllegalArgumentException("El correo electrónico no es válido");
+    }
+    this.correoElectronicoP = correoElectronicoP;
     }
 
     public String getNumeroTelefonoP() {

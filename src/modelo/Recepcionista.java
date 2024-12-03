@@ -20,7 +20,10 @@ public class Recepcionista extends Empleado {
     }
 
     public void setIdRecepcionista(int idRecepcionista) {
-        this.idRecepcionista = idRecepcionista;
+    if (idRecepcionista < 0) {
+        throw new IllegalArgumentException("El idRecepcionista no puede ser negativo");
+    }
+    this.idRecepcionista = idRecepcionista;
     }
 
     @Override

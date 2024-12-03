@@ -26,8 +26,11 @@ public class Cita {
     }
 
     public void setIdCita(int idCita) {
-        this.idCita = idCita;
+    if (idCita < 0) {
+        throw new IllegalArgumentException("idCita no puede ser negativo");
     }
+    this.idCita = idCita;
+}
 
     public int getIdPaciente() {
         return idPaciente;
@@ -58,16 +61,22 @@ public class Cita {
     }
 
     public void setMotivoConsulta(String motivoConsulta) {
-        this.motivoConsulta = motivoConsulta;
+    if (motivoConsulta == null || motivoConsulta.trim().isEmpty()) {
+        throw new IllegalArgumentException("El motivo de consulta no puede ser nulo o vacío");
     }
+    this.motivoConsulta = motivoConsulta;
+}
 
     public String getEstado() {
         return estado;
     }
 
     public void setEstado(String estado) {
-        this.estado = estado;
+    if (estado == null || estado.trim().isEmpty()) {
+        throw new IllegalArgumentException("El estado no puede ser nulo o vacío");
     }
+    this.estado = estado;
+}
 
     @Override
     public String toString() {
