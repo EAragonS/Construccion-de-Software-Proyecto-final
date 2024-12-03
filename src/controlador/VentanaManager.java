@@ -6,6 +6,7 @@ public class VentanaManager {
     // Ventanas principales
     private Login login;
     private GestionDeEmpleados gestionDeEmpleados;
+    private AgendaRecepcionista agendaRecepcionista;
     private DoctorVistaConsultas doctorVistaConsultas;
 
     // Vistas secundarias de GestionDeEmpleados
@@ -21,6 +22,7 @@ public class VentanaManager {
     // Controladores
     private LoginController loginController;
     private GestionDeEmpleadosController gestionDeEmpleadosController;
+    private AgendaRecepcionistaController agendaRecepcionistaController;
     private DoctorVistaConsultasController doctorVistaConsultasController;
 
     private AñadirEmpleadoController añadirEmpleadoController;
@@ -35,6 +37,7 @@ public class VentanaManager {
         // Crear controladores
         loginController = new LoginController(this);
         gestionDeEmpleadosController = new GestionDeEmpleadosController(this);
+        agendaRecepcionistaController = new AgendaRecepcionistaController(this);
         doctorVistaConsultasController = new DoctorVistaConsultasController(this);
 
         añadirEmpleadoController = new AñadirEmpleadoController(this);
@@ -51,6 +54,9 @@ public class VentanaManager {
 
         gestionDeEmpleados = new GestionDeEmpleados(gestionDeEmpleadosController);
         gestionDeEmpleadosController.setVista(gestionDeEmpleados);
+        
+        agendaRecepcionista = new AgendaRecepcionista(agendaRecepcionistaController); // Inicializa la vista
+        agendaRecepcionistaController.setVista(agendaRecepcionista); // Asocia la vista al controlador
 
         doctorVistaConsultas = new DoctorVistaConsultas(doctorVistaConsultasController);
         doctorVistaConsultasController.setVista(doctorVistaConsultas);
@@ -87,10 +93,20 @@ public class VentanaManager {
         ocultarTodasLasVistas();
         login.setVisible(true);
     }
+    
+    //Meétodo para mostrar mensajes de error en las ventanas de login
+    public void mostrarMensajeLogin(String mensaje) {
+        login.mostrarMensaje(mensaje);
+    }
 
     public void mostrarGestionDeEmpleados() {
         ocultarTodasLasVistas();
         gestionDeEmpleados.setVisible(true);
+    }
+    
+    public void MostrarAgendaRecepcionista() {
+        ocultarTodasLasVistas();
+        agendaRecepcionista.setVisible(true);
     }
 
     public void mostrarDoctorVistaConsultas() {

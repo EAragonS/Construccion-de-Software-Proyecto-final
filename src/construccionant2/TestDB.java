@@ -1,4 +1,4 @@
-package construccionant2;
+/*package construccionant2;
 
 import modelo.dao.RecepcionistaDAO;
 import modelo.dao.DoctorDAO;
@@ -11,6 +11,9 @@ import java.util.List;
 
 public class TestDB {
     public static void main(String[] args) {
+        
+        
+        
         // DAO para empleados, recepcionistas y doctores
         EmpleadoDAO empleadoDAO = new EmpleadoDAO();
         DoctorDAO doctorDAO = new DoctorDAO();
@@ -162,6 +165,46 @@ public class TestDB {
         List<Recepcionista> recepcionistas = recepcionistaDAO.consultar();
         for (Recepcionista recepcionista : recepcionistas) {
             System.out.println(recepcionista);
+        }
+    }
+}*/
+
+package construccionant2;
+
+import modelo.dao.RecepcionistaDAO;
+import modelo.dao.DoctorDAO;
+import modelo.dao.AdministradorDAO;
+import modelo.Recepcionista;
+import modelo.Doctor;
+import modelo.Administrador;
+import java.util.List;
+
+public class TestDB {
+    public static void main(String[] args) {
+        // DAO para recepcionistas, doctores y administradores
+        RecepcionistaDAO recepcionistaDAO = new RecepcionistaDAO();
+        DoctorDAO doctorDAO = new DoctorDAO();
+        AdministradorDAO administradorDAO = new AdministradorDAO();
+
+        System.out.println("\n=== Lista de Doctores ===");
+        // Obtener y mostrar todos los doctores
+        List<Doctor> doctores = doctorDAO.consultar();
+        for (Doctor doctor : doctores) {
+            System.out.println(doctor);
+        }
+
+        System.out.println("\n=== Lista de Recepcionistas ===");
+        // Obtener y mostrar todos los recepcionistas
+        List<Recepcionista> recepcionistas = recepcionistaDAO.consultar();
+        for (Recepcionista recepcionista : recepcionistas) {
+            System.out.println(recepcionista);
+        }
+
+        System.out.println("\n=== Lista de Administradores ===");
+        // Obtener y mostrar todos los administradores
+        List<Administrador> administradores = administradorDAO.consultar();
+        for (Administrador administrador : administradores) {
+            System.out.println(administrador);
         }
     }
 }

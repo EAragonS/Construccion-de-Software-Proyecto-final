@@ -1,16 +1,20 @@
 package modelo;
 
-public class Administrador {
-    private int idAdministrador;
-    private String nombre;
+import java.sql.Date;
 
-    // Constructor
-    public Administrador(int idAdministrador, String nombre) {
-        this.idAdministrador = idAdministrador;
-        this.nombre = nombre;
+public class Administrador extends Empleado {
+    private int idAdministrador;
+
+    public Administrador() {
+        super();
     }
 
-    // Getters y setters
+    public Administrador(int idAdministrador, int idEmpleado, String nombreCompleto, Date fechaIngreso, 
+                         String correoElectronico, String numTelefono, String nombreUsuario, String contrasena) {
+        super(idEmpleado, nombreCompleto, fechaIngreso, correoElectronico, numTelefono, nombreUsuario, contrasena);
+        this.idAdministrador = idAdministrador;
+    }
+
     public int getIdAdministrador() {
         return idAdministrador;
     }
@@ -19,16 +23,11 @@ public class Administrador {
         this.idAdministrador = idAdministrador;
     }
 
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
     @Override
     public String toString() {
-        return "Administrador{idAdministrador=" + idAdministrador + ", nombre='" + nombre + "'}";
+        return "Administrador{" +
+                "idAdministrador=" + idAdministrador +
+                ", " + super.toString() +
+                '}';
     }
 }

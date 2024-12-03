@@ -27,7 +27,7 @@ public class LoginController {
     }
 
     public void manejarEntrar() {
-        // Obtener las credenciales desde la vista
+        // Obtener las credenciales desde la vista directamente
         String nombreUsuario = vista.getCampoUsuario();
         String contrasena = vista.getCampoContraseña();
 
@@ -40,7 +40,7 @@ public class LoginController {
             Empleado empleado = empleadoOpt.get();
             identificarTipoEmpleado(empleado);
         } else {
-            vista.mostrarMensaje("Credenciales incorrectas.");
+            manager.mostrarMensajeLogin("Credenciales incorrectas.");
         }
     }
 
@@ -50,7 +50,7 @@ public class LoginController {
                 .anyMatch(d -> d.getIdEmpleado() == empleado.getIdEmpleado());
 
         if (esDoctor) {
-            System.out.println("Tipo de empleado detectado: Doctor");
+            manager.mostrarDoctorVistaConsultas();
             return;
         }
 
@@ -59,7 +59,7 @@ public class LoginController {
                 .anyMatch(r -> r.getIdRecepcionista() == empleado.getIdEmpleado());
 
         if (esRecepcionista) {
-            System.out.println("Tipo de empleado detectado: Recepcionista");
+            manager.MostrarAgendaRecepcionista();
             return;
         }
 
@@ -68,11 +68,11 @@ public class LoginController {
                 .anyMatch(a -> a.getIdAdministrador() == empleado.getIdEmpleado());
 
         if (esAdministrador) {
-            System.out.println("Tipo de empleado detectado: Administrador");
+            manager.mostrarGestionDeEmpleados();
             return;
         }
 
-        System.out.println("Tipo de empleado no detectado.");
+        manager.mostrarMensajeLogin("Tipo de empleado no detectado.");
     }
 
     public void manejarSalir() {

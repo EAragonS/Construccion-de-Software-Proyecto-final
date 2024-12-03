@@ -4,12 +4,21 @@
  */
 package vistas;
 
+import controlador.AgendaRecepcionistaController;
+import controlador.LoginController;
+
 /**
  *
  * @author Javier
  */
 public class AgendaRecepcionista extends javax.swing.JFrame {
+    private AgendaRecepcionistaController controlador;
 
+     public AgendaRecepcionista(AgendaRecepcionistaController controlador) {
+        this.controlador = controlador;
+        initComponents();
+        this.setLocationRelativeTo(null);
+     }
     /**
      * Creates new form AgendaRecepcionista
      */
